@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/felipe00/practice-kotlin/desenvolvimento mobi/IMD0509/Primera_unidade2/atividade/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v21/values-watch-v21.xml",
+            "map": [
+                {
+                    "source": "/home/felipe00/.gradle/caches/transforms-2/files-2.1/412b60cf7eebc7410ce70d9176643cb5/appcompat-1.1.0/res/values-watch-v21/values-watch-v21.xml",
+                    "from": {
+                        "startLines": "2,6,10",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,271,499",
+                        "endLines": "5,9,13",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "266,494,724"
+                    }
+                }
+            ]
+        }
+    ]
+}
