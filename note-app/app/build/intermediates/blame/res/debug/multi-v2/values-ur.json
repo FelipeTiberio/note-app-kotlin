@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/felipe00/practice-kotlin/desenvolvimento mobi/IMD0509/Primera_unidade2/atividade/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ur/values-ur.xml",
+            "outputFile": "/home/felipe/Documentos/note-app-kotlin/note-app/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ur/values-ur.xml",
             "map": [
                 {
-                    "source": "/home/felipe00/.gradle/caches/transforms-2/files-2.1/ef1a26e7639122c827fc931a131eed1d/core-1.1.0/res/values-ur/values-ur.xml",
+                    "source": "/home/felipe/.gradle/caches/transforms-2/files-2.1/ef1a26e7639122c827fc931a131eed1d/core-1.1.0/res/values-ur/values-ur.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/home/felipe00/.gradle/caches/transforms-2/files-2.1/412b60cf7eebc7410ce70d9176643cb5/appcompat-1.1.0/res/values-ur/values-ur.xml",
+                    "source": "/home/felipe/.gradle/caches/transforms-2/files-2.1/412b60cf7eebc7410ce70d9176643cb5/appcompat-1.1.0/res/values-ur/values-ur.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

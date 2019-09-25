@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/felipe00/practice-kotlin/desenvolvimento mobi/IMD0509/Primera_unidade2/atividade/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
+            "outputFile": "/home/felipe/Documentos/note-app-kotlin/note-app/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "/home/felipe00/.gradle/caches/transforms-2/files-2.1/412b60cf7eebc7410ce70d9176643cb5/appcompat-1.1.0/res/values-h720dp-v13/values-h720dp-v13.xml",
+                    "source": "/home/felipe/.gradle/caches/transforms-2/files-2.1/412b60cf7eebc7410ce70d9176643cb5/appcompat-1.1.0/res/values-h720dp-v13/values-h720dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

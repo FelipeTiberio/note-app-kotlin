@@ -9,29 +9,33 @@ import kotlinx.android.synthetic.main.activity_second.*
 
 class SecondActivity : AppCompatActivity() {
 
-    lateinit var newNote: Note
+    lateinit var note: Note
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-        newNote = intent.getSerializableExtra("note") as Note
+
+        note = intent.getSerializableExtra("note") as Note
         var id : Int = intent.getSerializableExtra("id") as Int
 
-
-        // action bar secondActivity
         val actionBar  = supportActionBar
-        actionBar!!.title = "Nova nota"
-        actionBar.setDisplayHomeAsUpEnabled(true)
 
+        /** Verifica se a intent é para uma nova nota ou um update de uma existente  */
+        if ( intent.getStringExtra("tipoNote") == "nova") {
+            actionBar!!.title = "Nova nota"
+        }else{
+            actionBar!!.title = note.title
+            textNote_editText.setText( note.text)
+        }
 
-        textNote_editText.setText( newNote.text)
+        actionBar!!.setDisplayHomeAsUpEnabled(true)
 
         button_gravar.setOnClickListener {
-            newNote.text = textNote_editText.text.toString()
-            var intentToReturn: Intent = Intent()
-            intentToReturn.putExtra("newNote", newNote)
-            intentToReturn.putExtra("id", id)
 
+            note.text = textNote_editText.text.toString()
+            var intentToReturn: Intent = Intent()
+            intentToReturn.putExtra("newNote", note)
+            intentToReturn.putExtra("id", id)
 
             setResult(Activity.RESULT_OK, intentToReturn)
 
@@ -49,7 +53,7 @@ class SecondActivity : AppCompatActivity() {
 
         MyEditDialog.show(supportFragmentManager, object : MyEditDialog.OnTextListener {
             override fun onSetText(text: String) {
-                newNote.title = text
+                note.title = text
             }
         })
     }

@@ -18,7 +18,7 @@ class noteSqlHelper(context: Context) :
 
     }
 
-    override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onUpgrade(db : SQLiteDatabase?, p1: Int, p2: Int) {
+         db!!.execSQL("DROP TABLE IF EXISTS $TABBLE_NAME; " )
     }
 }

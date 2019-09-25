@@ -16,6 +16,7 @@ const val MAIN_NEWNOTE = 10
 const val MAIN_UPDATENOTE = 15
 
 class MainActivity : AppCompatActivity() {
+    
 
     private var notes = mutableListOf<Note>()
     private var adapter = NoteAdapter(notes, this::onMessageItemClick)
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         intent.putExtra("note", note)
         intent.putExtra("id", id)
+        intent.putExtra( "tipoNote", "update")
         startActivityForResult(intent, MAIN_UPDATENOTE)
     }
 
@@ -54,6 +56,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
         val id = item.itemId
         val buttonAdd_id = R.id.addNotebutton
 
@@ -64,6 +67,7 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(this, SecondActivity::class.java)
                 intent.putExtra("note",note)
                 intent.putExtra("id", notes.lastIndex +1)
+                intent.putExtra( "tipoNote", "nova")
                 startActivityForResult(intent, MAIN_NEWNOTE)
 
             return true
@@ -75,6 +79,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initSwipeDelete(){
+
         val swipe = object : ItemTouchHelper.SimpleCallback(
             0,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
