@@ -30,8 +30,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         noteSqlHelper = SQLiteRepositoryNote(this)
+        var notesInDB = this.getNotesFromDB()
+
+        for( note in notesInDB){
+            this.notes.add(note)
+        }
 
         initReciclerView()
+    }
+
+
+    private  fun getNotesFromDB() : ArrayList<Note> {
+        return noteSqlHelper.notesArray()
     }
 
     private  fun initReciclerView(){

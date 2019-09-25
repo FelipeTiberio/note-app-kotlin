@@ -27,7 +27,6 @@ class NoteAdapter(private val notes: List<Note>, private val callback: (Note)-> 
         holder.bindView(notes[position])
 
         holder.itemView.setOnClickListener {
-           //Toast.makeText(holder.itemView.context, "vc clicou em mim ", Toast.LENGTH_SHORT).show()
             val note = notes[holder.adapterPosition]
             callback(note)
         }
@@ -38,7 +37,7 @@ class NoteAdapter(private val notes: List<Note>, private val callback: (Note)-> 
 
         fun bindView(note: Note) {
             this.itemView.titleItem_textview.text = note.title
-            //this.itemView.textContent_textview.text = note.text
+
         }
 
     }

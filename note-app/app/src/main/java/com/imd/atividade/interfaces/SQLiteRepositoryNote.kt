@@ -83,7 +83,6 @@ class SQLiteRepositoryNote(context: Context): NoteRepository  {
     }
 
     override fun search(term: String, callback: (List<Note>) -> Unit) {
-        //("not implemented") //To change body of created functions use File | Settings | File Templates.
         var sql = "SELECT * FROM $TABBLE_NAME"
         var args : Array<String>? =null
 
@@ -115,5 +114,24 @@ class SQLiteRepositoryNote(context: Context): NoteRepository  {
         var note = Note(title,description)
         note.id = id
         return note
+    }
+
+    fun notesArray() : ArrayList<Note>{
+        var sql = "SELECT * FROM $TABBLE_NAME"
+        var args : Array<String>? =null
+
+        sql += " ORDER BY $COLUMN_TITLE"
+        val db = helper.readableDatabase
+        val cursor = db.rawQuery(sql, args)
+        val notes = ArrayList<Note>()
+
+        while (cursor.moveToNext()){
+            val note = noteFromCursor(cursor)
+            notes.add(note)
+        }
+
+        cursor.close()
+        db.close()
+        return  notes
     }
 }
