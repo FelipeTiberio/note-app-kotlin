@@ -3,14 +3,13 @@ package com.imd.atividade.interfaces
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
-import androidx.core.content.contentValuesOf
 import com.imd.atividade.*
 
 class SQLiteRepositoryNote(context: Context): NoteRepository  {
 
-    private  val helper : noteSqlHelper = noteSqlHelper(context)
+    private  val helper : NoteSqlHelper = NoteSqlHelper(context)
 
-    private fun insert(note: Note){
+     fun insert(note: Note): Long{
         val db = helper.writableDatabase
 
         val contentValuesToDB = ContentValues().apply {
@@ -25,10 +24,12 @@ class SQLiteRepositoryNote(context: Context): NoteRepository  {
         }
 
         db.close()
+
+         return  id
     }
 
 
-    private fun update( note : Note){
+     fun update( note : Note){
         val db = helper.writableDatabase
 
         val contentValues = ContentValues().apply {

@@ -2,6 +2,7 @@ package com.imd.atividade
 
 import android.app.Activity
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -10,21 +11,25 @@ import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.imd.atividade.interfaces.SQLiteRepositoryNote
 import kotlinx.android.synthetic.main.activity_main.*
 
 const val MAIN_NEWNOTE = 10
 const val MAIN_UPDATENOTE = 15
 
 class MainActivity : AppCompatActivity() {
-    
-
+    // @DB
+    //private lateinit var  mydb : SQLiteDatabase
+    private lateinit var noteSqlHelper: SQLiteRepositoryNote
+    //-----
     private var notes = mutableListOf<Note>()
     private var adapter = NoteAdapter(notes, this::onMessageItemClick)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        noteSqlHelper = SQLiteRepositoryNote(this)
 
         initReciclerView()
     }
@@ -56,10 +61,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         val id = item.itemId
         val buttonAdd_id = R.id.addNotebutton
-
 
         var note = Note("", "")
 
@@ -92,6 +95,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
+                noteSqlHelper.remove(notes[position])
                 notes.removeAt(position)
                 adapter.notifyItemRemoved(position)
             }
@@ -107,17 +111,23 @@ class MainActivity : AppCompatActivity() {
         if(data != null) {
             if (requestCode == MAIN_NEWNOTE && resultCode == Activity.RESULT_OK)
             {
+                // objeto retornado pela segunda activity
                 var returnNote: Note = data.getSerializableExtra("newNote") as Note
+                // id de returnNote no banco
+                var id : Long? = noteSqlHelper.insert(returnNote)
+                returnNote.id = id
                 notes.add(returnNote)
                 adapter.notifyItemInserted(notes.lastIndex)
 
                 Toast.makeText(this, "Nova nota salva", Toast.LENGTH_SHORT).show()
             }
             else if ( requestCode == MAIN_UPDATENOTE &&  resultCode == Activity.RESULT_OK){
+
                 var returnNote: Note = data.getSerializableExtra("newNote") as Note
-                var id : Int = data.getSerializableExtra("id") as Int
-                notes[id] = returnNote
-                adapter.notifyItemChanged(id)
+                var idArray : Int = data.getSerializableExtra("id") as Int
+                notes[idArray] = returnNote
+                noteSqlHelper.update(returnNote)
+                adapter.notifyItemChanged(idArray)
                 Toast.makeText(this, "Update salvo", Toast.LENGTH_SHORT).show()
 
             }
