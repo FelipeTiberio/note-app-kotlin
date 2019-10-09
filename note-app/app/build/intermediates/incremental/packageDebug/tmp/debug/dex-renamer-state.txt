@@ -1,4 +1,0 @@
-#Wed Sep 25 16:20:31 BRT 2019
-base.0=/home/felipe/Documentos/note-app-kotlin/note-app/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
